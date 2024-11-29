@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Test</display-name>
+
+  <!-- EX01 -->
+  <servlet>
+  	<servlet-name>UrlMappingEx01</servlet-name>
+  	<servlet-class>com.test.lesson01.UrlMappingEx01</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>UrlMappingEx01</servlet-name>
+  	<url-pattern>/lesson01/ex01</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Quiz01 -->
+  <servlet>
+  	<servlet-name>UrlMappingQuiz01</servlet-name>
+  	<servlet-class>com.test.lesson01.UrlMappingQuiz01</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>UrlMappingQuiz01</servlet-name>
+  	<url-pattern>/lesson01/quiz01</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Quiz02 -->
+  <servlet>
+  	<servlet-name>UrlMappingQuiz02</servlet-name>
+  	<servlet-class>com.test.lesson01.UrlMappingQuiz02</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>UrlMappingQuiz02</servlet-name>
+  	<url-pattern>/lesson01/quiz02</url-pattern>
+  </servlet-mapping>
+</web-app>

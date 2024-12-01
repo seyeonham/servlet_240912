@@ -43,18 +43,34 @@ public class GetMethodQuiz08 extends HttpServlet{
 //			}
 //		}
 		
+//		Iterator<String> iter = list.iterator();
+//		while (iter.hasNext()) {
+//			String key = iter.next();
+//			if (key.contains(word)) {
+//				String[] sentences = key.split(word);
+//				for (int i = 0; i < sentences.length; i++) {
+//					if (sentences[i].equals(word)) {
+//						sentences[i] = "<b>" + word + "</b>";
+//					}
+//				}
+//				for (int i = 0; i < sentences.length; i++) {
+//					out.print(sentences[i] + " ");
+//				}
+//				out.print("<br>");
+//			}
+//		}
+		
 		Iterator<String> iter = list.iterator();
 		while (iter.hasNext()) {
 			String key = iter.next();
 			if (key.contains(word)) {
 				String[] sentences = key.split(word);
 				for (int i = 0; i < sentences.length; i++) {
-					if (sentences[i].equals(word)) {
-						sentences[i] = "<b>" + word + "</b>";
+					if (sentences.length - 1 <= i) {
+						out.print(sentences[i]);
+					} else {
+						out.print(sentences[i] + "<b>" + word + "</b>");
 					}
-				}
-				for (int i = 0; i < sentences.length; i++) {
-					out.print(sentences[i] + " ");
 				}
 				out.print("<br>");
 			}

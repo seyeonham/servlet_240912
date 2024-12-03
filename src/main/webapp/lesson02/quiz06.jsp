@@ -19,13 +19,13 @@
 	%>
 	
 	<div class="container">
-		<h2>장보기 목록</h2>
+		<h2 class="text-center">장보기 목록</h2>
 		
 		<table class="table">
 			<thead>
 				<tr>
-					<th>번호</th>
-					<th>품목</th>
+					<th class="text-center">번호</th>
+					<th class="text-center">품목</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,17 +34,21 @@
 					
 			%>
 				<tr>
-					<th>
+					<td class="text-center">
 					<%
 						out.print(i);
 					%>
-					</th>
+					</td>
+					<td class="text-center">
+					<%
+						out.print(goodsList.get(i - 1));
+					%>
+					</td>
 				</tr>
-				<td></td>
-			</tbody>
 			<%
 				}
 			%>
+			</tbody>
 		</table>
 	</div>
 

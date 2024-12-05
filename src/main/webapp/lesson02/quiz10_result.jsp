@@ -104,12 +104,21 @@
 			<h3 class="col-2 mb-0"><a href="/lesson02/quiz10_list.jsp" class="text-success">Melong</a></h3>
 			<div class="col-10">
 				<form method="get" action="/lesson02/quiz10_result.jsp">
+				<%
+					String title = request.getParameter("title");
+					for (Map<String, Object> music : musicList) {
+						if (title.equals(music.get("title"))) {
+				%>
 					<div class="input-group col">
-						<input type="text" class="form-control col-6" name="song">
+						<input type="text" class="form-control col-6" name="title" value="<%= title %>">
 						<div class="input-group-append">
 							<button class="btn btn-info" type="submit">검색</button>
 						</div>
 					</div>
+				<%
+						}
+					}
+				%>
 				</form>
 			</div>
 		</header>
@@ -126,10 +135,8 @@
 		<section class="contents">
 			<div class="border border-success d-flex p-3">
 			<%
-				String title = request.getParameter("title");
-				String song = request.getParameter("song");
 				for (Map<String, Object> music : musicList) {
-					if ((title.equals(music.get("title")) && song == null) || (title == null && song.equals(music.get("title")))) {
+					if (title.equals(music.get("title"))) {
 						
 			%>
 				<div class="mr-3 d-flex align-items-center justify-content-center">

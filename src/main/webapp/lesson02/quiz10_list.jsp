@@ -105,7 +105,7 @@
 			<div class="col-10">
 				<form method="get" action="/lesson02/quiz10_result.jsp">
 					<div class="input-group col">
-						<input type="text" class="form-control col-6" name="song">
+						<input type="text" class="form-control col-6" name="title">
 						<div class="input-group-append">
 							<button class="btn btn-info" type="submit">검색</button>
 						</div>

@@ -12,7 +12,8 @@
 <title>채널 안내</title>
 
 <style>
-	header {height:50px; color:red; font-size:25px; font-weight:bold;}
+	header {height:50px; font-size:25px; font-weight:bold;}
+	nav {height:50px;}
 	footer {height:50px;}
 </style>
 </head>
@@ -57,11 +58,11 @@
 	list.add(map);
 %>
 	<div id="wrap" class="container">
-		<header class="d-flex justify-content-center align-items-center">
+		<header class="text-danger d-flex justify-content-center align-items-center">
 			Sk Broadband IPTV
 		</header>
-		<nav class="bg-danger">
-			<ul class="nav nav-fill">
+		<nav class="bg-danger d-flex align-items-center">
+			<ul class="nav nav-fill w-100">
 				<li class="nav-item"><a href="/lesson02/quiz09.jsp" class="nav-link text-white">전체</a></li>
 				<li class="nav-item"><a href="/lesson02/quiz09.jsp?category=지상파" class="nav-link text-white">지상파</a></li>
 				<li class="nav-item"><a href="/lesson02/quiz09.jsp?category=드라마" class="nav-link text-white">드라마</a></li>
@@ -83,7 +84,8 @@
 				<%
 					String cate = request.getParameter("category");
 					for (Map<String, String> channel : list) {
-						if (cate == null) {
+						// 출력되는 케이스: 전체(null) 또는 category가 있고(!null) 일치(map == param)할 때
+						if (cate == null || cate.equals(channel.get("category"))) {
 				%>			
 					<tr>
 						<td><%= channel.get("ch") %></td>
@@ -91,16 +93,6 @@
 						<td><%= channel.get("category") %></td>
 					</tr>
 				<%			
-						}
-						if (cate != null && cate.equals(channel.get("category"))) {
-							
-				%>
-					<tr>
-						<td><%= channel.get("ch") %></td>
-						<td><%= channel.get("name") %></td>
-						<td><%= channel.get("category") %></td>
-					</tr>
-				<%
 						}
 					}
 				%>

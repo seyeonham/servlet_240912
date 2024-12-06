@@ -105,7 +105,7 @@
 			<div class="col-10">
 				<form method="get" action="/lesson02/quiz10_result.jsp">
 					<div class="input-group col">
-						<input type="text" class="form-control col-6" name="title">
+						<input type="text" class="form-control col-6" name="search">
 						<div class="input-group-append">
 							<button class="btn btn-info" type="submit">검색</button>
 						</div>
@@ -149,7 +149,7 @@
 					%>
 						<tr>
 							<td><%= list.get("id") %></td>
-							<td><a href="/lesson02/quiz10_result.jsp?title=<%= list.get("title") %>"><%= list.get("title") %></a></td>
+							<td><a href="/lesson02/quiz10_result.jsp?id=<%= list.get("id") %>"><%= list.get("title") %></a></td>
 							<td><%= list.get("album") %></td>
 						</tr>
 					<%

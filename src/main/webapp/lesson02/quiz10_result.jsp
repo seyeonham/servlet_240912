@@ -105,20 +105,37 @@
 			<div class="col-10">
 				<form method="get" action="/lesson02/quiz10_result.jsp">
 				<%
-					String title = request.getParameter("title");
-					for (Map<String, Object> music : musicList) {
-						if (title.equals(music.get("title"))) {
+					Map<String, Object> target = null; // 검색된 결과(노래)
+					
+					// 1) id로 들어오는 경우 -> a 태그
+					if (request.getParameter("id") != null) {
+						int id = Integer.parseInt(request.getParameter("id"));
+						
+						for (Map<String, Object> music : musicList) {
+							if (music.get("id").equals(id)) {
+								target = music;
+								break;
+							}
+						}
+					}
+					
+					// 2) 검색어로 들어오는 경우 -> form 태그
+					if (request.getParameter("search") != null) {
+						for (Map<String, Object> music : musicList) {
+							if (music.get("title").equals(request.getParameter("search"))) {
+								target = music;
+								break;
+							}
+						}
+					}
+					
 				%>
 					<div class="input-group col">
-						<input type="text" class="form-control col-6" name="title" value="<%= title %>">
+						<input type="text" class="form-control col-6" name="search">
 						<div class="input-group-append">
 							<button class="btn btn-info" type="submit">검색</button>
 						</div>
 					</div>
-				<%
-						}
-					}
-				%>
 				</form>
 			</div>
 		</header>
@@ -134,17 +151,12 @@
 		<h4 class="font-weight-bold">곡 정보</h4>
 		<section class="contents">
 			<div class="border border-success d-flex p-3">
-			<%
-				for (Map<String, Object> music : musicList) {
-					if (title.equals(music.get("title"))) {
-						
-			%>
 				<div class="mr-3 d-flex align-items-center justify-content-center">
-					<image src="<%= music.get("thumbnail") %>" alt="singer" width="180">
+					<image src="<%= target.get("thumbnail") %>" alt="singer" width="180">
 				</div>
 				<div>
-					<div class="display-4"><%= music.get("title") %></div>
-					<div class="text-success font-weight-bold"><%= music.get("singer") %></div>
+					<div class="display-4"><%= target.get("title") %></div>
+					<div class="text-success font-weight-bold"><%= target.get("singer") %></div>
 					<div class="music-info d-flex text-secondary mt-2">
 						<div>
 							<div>앨범</div>
@@ -153,17 +165,13 @@
 							<div>작사가</div>
 						</div>
 						<div class="ml-4">
-							<div><%= music.get("album") %></div>
-							<div class="text-dark"><%= (Integer)music.get("time") / 60 %> : <%= (Integer)music.get("time") % 60 %></div>
-							<div><%= music.get("composer") %></div>
-							<div><%= music.get("lyricist") %></div>
+							<div><%= target.get("album") %></div>
+							<div class="text-dark"><%= (Integer)target.get("time") / 60 %> : <%= (Integer)target.get("time") % 60 %></div>
+							<div><%= target.get("composer") %></div>
+							<div><%= target.get("lyricist") %></div>
 						</div>
 					</div>
 				</div>
-			<%
-					}
-				}
-			%>
 			</div>
 			<div class="mt-3">
 				<h4 class="font-weight-bold">가사</h4>
